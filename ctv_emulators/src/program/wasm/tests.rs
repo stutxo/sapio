@@ -255,14 +255,15 @@ fn allocation_and_evaluation_share_one_nonrenewable_fuel_budget() {
         .unwrap_err()
         .0
         .contains("sapio_alloc_v1"));
-    // Each call consumes 40M bulk-memory fuel without growing the instance.
-    // Three allocations therefore exhaust the common 100M allowance even
+    // Each call consumes 80M bulk-memory fuel without growing the instance.
+    // Three allocations therefore exhaust the common 200M allowance even
     // though every individual allocation would fit in a fresh budget.
     let cumulative = wat::parse_str(
         r#"(module
         (memory (export "memory") 640)
         (global $heap (mut i32) (i32.const 4096))
         (func (export "sapio_alloc_v1") (param $length i32) (result i32)
+            i32.const 0 i32.const 0 i32.const 40000000 memory.fill
             i32.const 0 i32.const 0 i32.const 40000000 memory.fill
             global.get $heap global.get $heap local.get $length i32.add global.set $heap)
         (func (export "sapio_evaluate_v1")

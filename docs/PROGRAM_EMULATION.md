@@ -164,7 +164,7 @@ The legacy `SignPSBT` service cannot interpret `SignProgramV1` requests.
 
 | Resource | Implemented limit |
 | --- | --- |
-| Exact program bytes | 65,536, in native and serialized construction |
+| Exact program bytes | 131,072, in native and serialized construction |
 | Exact preset parameters | 65,536, in native and serialized construction |
 | Auxiliary witness | 65,536, in native signing and deserialization |
 | JSON frame body | 1–1,000,000 bytes |

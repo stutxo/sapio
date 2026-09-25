@@ -112,7 +112,7 @@ cryptography; this does not remove all secp256k1 code from compiler modules.
 
 ## Resource and execution semantics
 
-Version one uses 100,000,000 fuel points per instance, shared by initialization,
+Version one uses 200,000,000 fuel points per instance, shared by initialization,
 allocation, evaluation and host calls. Ordinary instructions cost one point.
 Bulk memory operations additionally cost one point per byte; memory growth
 costs 65,536 per page; table bulk operations cost 16 per element. Memory is
@@ -125,8 +125,8 @@ This prevents a predicate from accepting because host allocation failed.
 Successful growth still returns the previous size. Compiler plugins retain
 ordinary WASM growth-result behavior.
 
-Program and interpreter modules remain limited to 65,536 bytes. Parameters,
-program input and auxiliary evidence each retain their 65,536-byte bounds.
+Program bytes and interpreter modules are limited to 131,072 bytes. Parameters
+and auxiliary evidence each retain their 65,536-byte bounds.
 The encoded signed view is bounded to 1 MiB before copying it into guest memory.
 The existing transport frame limit also applies; these bounds are not additive
 permission to exceed that frame.

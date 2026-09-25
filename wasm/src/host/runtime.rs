@@ -11,7 +11,7 @@ use wasmer_middlewares::Metering;
 use wasmer_types::ModuleInfo;
 
 /// Nonrenewable fuel for one instance, shared by start and every exported call.
-pub const INSTANCE_FUEL: u64 = 100_000_000;
+pub const INSTANCE_FUEL: u64 = 200_000_000;
 /// Accessible linear memory, in 64 KiB WASM pages.
 const MAX_MEMORY_PAGES: u32 = 1024;
 const MAX_TABLE_ELEMENTS: u32 = 65_536;

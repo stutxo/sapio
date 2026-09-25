@@ -261,7 +261,7 @@ The host uses Wasmer 6.1 with these fixed execution limits:
 | Binary module source, including debug information | 128 MiB |
 | Accessible linear memory per instance | One memory, at most 64 MiB |
 | Table per instance | One table, at most 65,536 elements |
-| Execution fuel per instance | 100,000,000 points across its entire lifetime |
+| Execution fuel per instance | 200,000,000 points across its entire lifetime |
 | Nested module depth | Eight levels below the top-level instance |
 | Child module attempts | 64 across the top-level handle and all descendants |
 
@@ -400,8 +400,9 @@ configuration.
 `ProgramOracle` and `ProgramClient` provide a separate versioned evaluated
 signing protocol with the same frame bound and default 30-second I/O allowance.
 The program server admits 64 connections by default. Each client request uses
-a fresh connection and has no automatic retry or CTV fallback. Program bytes,
-preset parameters and auxiliary witness each have a 65,536-byte bound. The
+a fresh connection and has no automatic retry or CTV fallback. Program bytes
+have a 131,072-byte bound; preset parameters and auxiliary witness each retain
+their 65,536-byte bound. The
 operator registers exact WASM interpreters, or uses inline WASM through the zero
 evaluator ID. Guest execution shares bounded fuel with native crypto imports;
 elapsed deadlines cannot interrupt native module compilation. See the [protocol and signing

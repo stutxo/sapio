@@ -75,7 +75,9 @@ fn failure(error: impl std::fmt::Display) -> EvaluationError {
 
 fn check_module_bytes(module: &[u8]) -> Result<(), EvaluationError> {
     if module.len() > MAX_PROGRAM_BYTES {
-        return Err(failure("WASM evaluator module exceeds 65536 bytes"));
+        return Err(failure(format_args!(
+            "WASM evaluator module exceeds {MAX_PROGRAM_BYTES} bytes"
+        )));
     }
     if !module.starts_with(b"\0asm\x01\0\0\0") {
         return Err(failure(

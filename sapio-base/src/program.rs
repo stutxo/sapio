@@ -36,7 +36,7 @@ pub enum ProgramSpendPath {
 }
 
 /// Maximum exact program length, in bytes.
-pub const MAX_PROGRAM_BYTES: usize = 65_536;
+pub const MAX_PROGRAM_BYTES: usize = 131_072;
 /// Maximum exact preset-parameter length, in bytes.
 pub const MAX_PARAMETER_BYTES: usize = 65_536;
 /// Maximum root depth before deriving the ten-child program path.
@@ -179,7 +179,7 @@ pub struct ProgramId(
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, JsonSchema)]
 pub struct ProgramInstance {
     evaluator: EvaluatorId,
-    #[schemars(length(max = 65536))]
+    #[schemars(length(max = 131072))]
     program: Vec<u8>,
     #[schemars(length(max = 65536))]
     parameters: Vec<u8>,
